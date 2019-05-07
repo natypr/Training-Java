@@ -11,6 +11,37 @@ import java.util.Scanner;
 public class Ex4 {
     public static void main(String[] args) {
 
+        Method1();
+    //    Method2();
+
+    }
+
+    private static void Method1(){
+
+        Scanner in = new Scanner(System.in);
+
+        System.out.println("Enter a four-digit number: ");
+        int num = in.nextInt();
+
+        if ((num / 1000 > 0) && (num < 10000) ) {
+            boolean check1 = num/1000 < num/100%10 && num/100%10 < num/10%10 && num/10%10 < num%10;
+            boolean check2 = num/1000 > num/100%10 && num/100%10 > num/10%10 && num/10%10 > num%10;
+
+            if (check1){
+                System.out.println("Increasing sequence");
+            }else if (check2){
+                System.out.println("Descending sequence");
+            }else {
+                System.out.println("Numbers don't form any sequence");}
+
+        } else {
+            System.out.println("It isn't a four-digit number");
+        }
+    }
+
+
+    private static void Method2(){
+
         int num;
         boolean inc = false;
         boolean dec = false;

@@ -19,7 +19,7 @@ public class Ex1 {
         System.out.print("Enter a number C: ");
         int c = in.nextInt();
 
-        if(a==b & a==c & c==b){
+        if(a==b && a==c && c==b){
             System.out.println("A, B, C are the same.");
         }else if(a==b){
             System.out.println("A, B are the same.");

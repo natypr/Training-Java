@@ -19,11 +19,16 @@ public class Ex7 {
         int b = in.nextInt();
 
         System.out.println("Originally a=" + a + ", b=" + b);
-        a += b;
-        b = a - b;
-        a -= b;
 
-        System.out.println("After permutation a=" + a + ", b=" + b);
+        if (a==b) {
+            System.out.println("The numbers a and b are equal");
+        } else {
+            a += b;
+            b = a - b;
+            a -= b;
+
+            System.out.println("After permutation a=" + a + ", b=" + b);
+        }
     }
 
 }
