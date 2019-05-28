@@ -1,0 +1,5 @@
+Vadim Krechko 48 180 2800.0 Senior $
+Dmitriy Dremin 25 180 1000.0 Junior $
+Konstantin Ahremev 39 180 2000.0 Developer $
+Foka Burelevskiy 28 180 1300.0 Junior $
+Maxim Loginov 28 180 2200.0 Developer $
