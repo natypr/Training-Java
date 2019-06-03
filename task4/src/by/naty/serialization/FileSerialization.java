@@ -1,9 +1,7 @@
 package by.naty.serialization;
 
 import java.io.BufferedInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.Scanner;
 
 public class FileSerialization implements Serialization {
@@ -11,14 +9,9 @@ public class FileSerialization implements Serialization {
     private final Scanner reader;
     private static String DELIMITER = "$";
 
-    public FileSerialization(File file)
+    public FileSerialization(InputStream stream)
     {
-        try {
-            reader = new Scanner(new BufferedInputStream(new FileInputStream(file)));
-        }
-        catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        reader = new Scanner(new BufferedInputStream(stream));
     }
 
     @Override

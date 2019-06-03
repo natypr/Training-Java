@@ -5,13 +5,13 @@ import by.naty.model.entity.Team;
 import by.naty.serialization.FileSerialization;
 import by.naty.serialization.Serialization;
 
-import java.io.File;
+import java.io.InputStream;
 
 public class LoadFile {
 
-    public static void loadFromFile(File file)
+    public static Team loadFromFile(InputStream stream)
     {
-        try (Serialization reader = new FileSerialization(file)) {
+        try (Serialization reader = new FileSerialization(stream)) {
             Team team = new Team();
             while (reader.hasMoreTokens()) {
                 try {
@@ -27,9 +27,10 @@ public class LoadFile {
                     System.err.println(e.getMessage());
                 }
             }
+            return team;
         }
         catch (Exception e) {
-            System.err.println("Error loading from file '" + file.getAbsolutePath() + "': " + e.getMessage());
+            throw new RuntimeException(e);
         }
     }
 

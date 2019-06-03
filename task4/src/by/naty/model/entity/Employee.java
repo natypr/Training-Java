@@ -2,6 +2,7 @@ package by.naty.model.entity;
 
 import by.naty.serialization.Serialization;
 
+import java.util.Comparator;
 import java.util.Optional;
 
 public class Employee extends Person {
@@ -57,4 +58,18 @@ public class Employee extends Person {
         return str;
     }
 
+    public static final Comparator<Employee> COMPARATOR_OF_SALARY =
+            Comparator.comparing(obj -> obj.getSalary().orElse(0.0));
+
+    public static Comparator<Employee> COMPARATOR_OF_HOUR =
+            COMPARATOR_OF_SALARY.thenComparing(obj -> obj.getHour().orElse(0));
+
+    public static Comparator<Employee> COMPARATOR_OF_POSITION =
+            COMPARATOR_OF_HOUR.thenComparing(obj -> obj.getPosition().orElse(""));
+
+    public static Comparator<Employee> COMPARATOR_OF_AGE =
+            COMPARATOR_OF_POSITION.thenComparing(obj -> obj.getAge().orElse(0));
+
+    public static Comparator<Employee> COMPARATOR_OF_FIRST_NAME =
+            COMPARATOR_OF_AGE.thenComparing(obj -> obj.getFirstName().orElse(""));
 }
