@@ -13,23 +13,29 @@ public class LoadFile {
     {
         try (Serialization reader = new FileSerialization(stream)) {
             Team team = new Team();
+
+            Factory factory = Factory.getInstance();
+
             while (reader.hasMoreTokens()) {
                 try {
-                    Employee employee = new Employee();
+                    EmployeeType positionType = EmployeeType.valueOf(reader.readString());
+                    Employee employee = factory.create(positionType, new Employee());
+
                     employee.deserialize(reader);
-                    team.add(employee);
 
                     if (!reader.readDelimiter()) {
                         throw new IllegalArgumentException("Deserialize didn't consume all its input");
                     }
-                }
-                catch (Exception e){
+
+                    team.add(employee);
+
+                } catch (Exception e) {
                     System.err.println(e.getMessage());
                 }
             }
             return team;
-        }
-        catch (Exception e) {
+
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }

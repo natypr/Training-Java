@@ -8,8 +8,13 @@ public class Team {
 
     private final List<Employee> team = new ArrayList<>();
 
-    public void add(Employee employee)
-    {
+    public static final Comparator<Employee> COMPARATOR_OF_SALARY =
+            Comparator.comparing(obj -> obj.getSalary().orElse(0.0));
+
+    public static final Comparator<Employee> COMPARATOR_OF_SALARY_AND_HOUR =
+            COMPARATOR_OF_SALARY.thenComparing(obj -> obj.getHour().orElse(0));
+
+    public void add(Employee employee) {
         team.add(employee);
     }
 
@@ -35,4 +40,11 @@ public class Team {
         return sum;
     }
 
+    public String toString() {
+        String str = "";
+        for(int i = 0; i < team.size(); i++) {
+            str += team.get(i) + " ";
+        }
+        return str;
+    }
 }
