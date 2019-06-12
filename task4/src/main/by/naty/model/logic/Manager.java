@@ -6,8 +6,10 @@ import main.by.naty.model.entity.Team;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class Manager {
+    private static final Logger log = Logger.getLogger(Manager.class.getName());
 
     public static final Comparator<Employee> COMPARATOR_OF_SALARY =
             Comparator.comparing(obj -> obj.getSalary().orElse(0.0));
@@ -17,6 +19,7 @@ public class Manager {
 
 
     public static double costInManHours(Team team) {
+        log.info("Man hour counting.");
         double sum = 0;
         for (Employee employee : team.getTeam()) {
             sum += employee.getSalary().orElse(0.0) / employee.getHour().orElse(1);
@@ -26,6 +29,7 @@ public class Manager {
 
 
     public static List<Employee> filterBySalary(Team team, double min, double max) {
+        log.info("Filtering list by salary.");
         List<Employee> list = new ArrayList<>();
         for (Employee employee : team.getTeam()) {
             if ((employee.getSalary().orElse(-1.0) >= min) && (employee.getSalary().orElse(-1.0) <= max)) {
@@ -37,11 +41,13 @@ public class Manager {
 
 
     public static void sort(Comparator<Employee> comparator) {
+        log.info("Inline sorting.");
         sort(comparator);
     }
 
 
     public static void insertionSort(Team team, int size, Comparator<Employee> comparator){
+        log.info("My insertion sort.");
         int j = 0;
         Employee temp = null;
 

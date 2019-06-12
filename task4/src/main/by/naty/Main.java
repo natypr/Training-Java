@@ -7,17 +7,21 @@ import main.by.naty.util.ConsoleInput;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.logging.Logger;
 
 import static main.by.naty.model.logic.Manager.COMPARATOR_OF_SALARY;
 import static main.by.naty.model.logic.Manager.COMPARATOR_OF_SALARY_AND_HOUR;
 
 public class Main {
+    private static final Logger log = Logger.getLogger(Main.class.getName());
 
     public static void main(String[] args) throws IOException {
+        log.info("Start application.");
 
         Team team;
         try(InputStream stream = Main.class.getClassLoader().getResourceAsStream("/employee.txt")){
             team = LoadFile.loadFromFile(stream);
+            log.info("End of loading.");
         }
 
         System.out.println("Team list:");

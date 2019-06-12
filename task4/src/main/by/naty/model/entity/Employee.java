@@ -3,8 +3,10 @@ package main.by.naty.model.entity;
 import main.by.naty.model.serialization.Serialization;
 
 import java.util.Optional;
+import java.util.logging.Logger;
 
 public class Employee extends Person {
+    private static final Logger log = Logger.getLogger(Employee.class.getName());
 
     private Optional<Integer> hour;
 
@@ -60,6 +62,7 @@ public class Employee extends Person {
     }
 
     public String toString() {
+        log.info("Transformation team to string.");
         String str = String.valueOf(
                 getFirstName()) + " " +
                 getLastName() + "  " +
