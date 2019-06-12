@@ -1,8 +1,8 @@
-package by.naty.model.entity;
+package main.by.naty.model.entity;
 
 import java.util.Optional;
 
-public class Person {
+public abstract class Person {
 
     private Optional<String> firstName;
 

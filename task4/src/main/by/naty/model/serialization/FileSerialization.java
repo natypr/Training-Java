@@ -1,4 +1,4 @@
-package by.naty.serialization;
+package main.by.naty.model.serialization;
 
 import java.io.BufferedInputStream;
 import java.io.InputStream;

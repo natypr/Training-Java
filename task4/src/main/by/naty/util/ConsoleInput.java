@@ -1,4 +1,4 @@
-package by.naty.model.util;
+package main.by.naty.util;
 
 import java.util.Scanner;
 

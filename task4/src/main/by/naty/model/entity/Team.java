@@ -1,4 +1,4 @@
-package by.naty.model.entity;
+package main.by.naty.model.entity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +10,22 @@ public class Team {
 
     public void add(Employee employee) {
         team.add(employee);
+    }
+
+    public List<Employee> getTeam(){
+        return team;
+    }
+
+    public Employee getEmployee(int index) {
+        return team.get(index);
+    }
+
+    public Employee setEmployee(Employee employee, int index) {
+        return team.set(index, employee);
+    }
+
+    public int size() {
+        return team.size();
     }
 
     @Override

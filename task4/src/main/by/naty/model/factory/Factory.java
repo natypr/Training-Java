@@ -1,9 +1,9 @@
-package by.naty.model.util;
+package main.by.naty.model.factory;
 
-import by.naty.model.entity.Employee;
-import by.naty.model.entity.Junior;
-import by.naty.model.entity.Senior;
-import by.naty.model.entity.TeamLead;
+import main.by.naty.model.entity.Employee;
+import main.by.naty.model.entity.position.Junior;
+import main.by.naty.model.entity.position.Senior;
+import main.by.naty.model.entity.position.TeamLead;
 
 
 public class Factory {

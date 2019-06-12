@@ -1,6 +1,6 @@
-package by.naty.model.entity;
+package main.by.naty.model.entity;
 
-import by.naty.serialization.Serialization;
+import main.by.naty.model.serialization.Serialization;
 
 import java.util.Optional;
 
@@ -12,13 +12,18 @@ public class Employee extends Person {
 
     private Optional<String> position;
 
-    public Employee() { }
+    public Employee() {
+        hour = Optional.of(0);
+        salary = Optional.of(0.0);
+        position = Optional.of("None");
+    }
 
     public Employee(Optional<Integer> hour, Optional<Double> salary, Optional<String> position) {
         this.hour = hour;
         this.salary = salary;
         this.position = position;
     }
+
 
     public Optional<Integer> getHour() {
         return hour;
@@ -43,6 +48,7 @@ public class Employee extends Person {
     public void setPosition(String position) {
         this.position = Optional.of(position);
     }
+
 
     public void deserialize(Serialization reader) {
         setPosition(reader.readString());
