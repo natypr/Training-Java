@@ -1,12 +1,13 @@
 package main.by.naty.model.serialization;
 
+import org.apache.log4j.Logger;
+
 import java.io.BufferedInputStream;
 import java.io.InputStream;
 import java.util.Scanner;
-import java.util.logging.Logger;
 
-public class FileSerialization implements Serialization {
-    private static final Logger log = Logger.getLogger(FileSerialization.class.getName());
+public class FileSerialization implements ISerialization {
+    private static final Logger log = Logger.getLogger(FileSerialization.class);
 
     private final Scanner reader;
     private static String DELIMITER = "$";
@@ -19,21 +20,28 @@ public class FileSerialization implements Serialization {
     @Override
     public int readInteger()
     {
+        log.info("read int");
         String next = reader.next();
         if (DELIMITER.equals(next)) {
            // log.log(Level.WARNING, "Reading Int past delimiter!", new Throwable());
-            log.warning("Reading Int past delimiter!");
+            log.warn("Reading Int past delimiter!");
             throw new RuntimeException("Reading past delimiter");
         }
-        return Integer.valueOf(next);
+        try {
+            return Integer.valueOf(next);
+        } catch (NumberFormatException e){
+            return -1;
+        }
+
     }
 
     @Override
     public double readDouble()
     {
+        log.info("read double");
         String next = reader.next();
         if (DELIMITER.equals(next)) {
-            log.warning("Reading Double past delimiter!");
+            log.warn("Reading Double past delimiter!");
             throw new RuntimeException("Reading past delimiter");
         }
         return Double.valueOf(next);
@@ -42,9 +50,10 @@ public class FileSerialization implements Serialization {
     @Override
     public String readString()
     {
+        log.info("read string");
         String next = reader.next();
         if (DELIMITER.equals(next)) {
-            log.warning("Reading String past delimiter!");
+            log.warn("Reading String past delimiter!");
             throw new RuntimeException("Reading past delimiter");
         }
         return next;

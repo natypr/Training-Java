@@ -2,14 +2,14 @@ package main.by.naty.model.logic;
 
 import main.by.naty.model.entity.Employee;
 import main.by.naty.model.entity.Team;
+import org.apache.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.logging.Logger;
 
 public class Manager {
-    private static final Logger log = Logger.getLogger(Manager.class.getName());
+    private static final Logger log = Logger.getLogger(Manager.class);
 
     public static final Comparator<Employee> COMPARATOR_OF_SALARY =
             Comparator.comparing(obj -> obj.getSalary().orElse(0.0));
@@ -40,10 +40,10 @@ public class Manager {
     }
 
 
-    public static void sort(Comparator<Employee> comparator) {
+    /*public static void sort(Comparator<Employee> comparator) {
         log.info("Inline sorting.");
         sort(comparator);
-    }
+    }*/
 
 
     public static void insertionSort(Team team, int size, Comparator<Employee> comparator){

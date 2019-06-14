@@ -1,6 +1,5 @@
-package main.by.naty.model.entity.position;
+package main.by.naty.model.entity;
 
-import main.by.naty.model.entity.Employee;
 
 import java.util.Optional;
 

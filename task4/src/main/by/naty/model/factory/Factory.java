@@ -1,15 +1,14 @@
 package main.by.naty.model.factory;
 
 import main.by.naty.model.entity.Employee;
-import main.by.naty.model.entity.position.Junior;
-import main.by.naty.model.entity.position.Senior;
-import main.by.naty.model.entity.position.TeamLead;
-
-import java.util.logging.Logger;
+import main.by.naty.model.entity.Junior;
+import main.by.naty.model.entity.Senior;
+import main.by.naty.model.entity.TeamLead;
+import org.apache.log4j.Logger;
 
 
 public class Factory {
-    private static final Logger log = Logger.getLogger(Factory.class.getName());
+    private static final Logger log = Logger.getLogger(Factory.class);
 
     private static Factory instance = null;
 
@@ -32,7 +31,7 @@ public class Factory {
             case Junior:
                 return new Junior(employee.getHour(), employee.getSalary(), employee.getPosition());
             default:
-                log.warning("Unsupported type: " + employeeType + "!");
+                log.warn("Unsupported type: " + employeeType + "!");
                 throw new IllegalArgumentException("Unsupported type: " + employeeType);
         }
     }

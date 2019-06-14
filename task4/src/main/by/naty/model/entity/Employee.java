@@ -1,12 +1,13 @@
 package main.by.naty.model.entity;
 
-import main.by.naty.model.serialization.Serialization;
+import main.by.naty.model.serialization.ISerialization;
+import org.apache.log4j.Logger;
 
+import java.util.Objects;
 import java.util.Optional;
-import java.util.logging.Logger;
 
 public class Employee extends Person {
-    private static final Logger log = Logger.getLogger(Employee.class.getName());
+    private static final Logger log = Logger.getLogger(Employee.class);
 
     private Optional<Integer> hour;
 
@@ -52,8 +53,8 @@ public class Employee extends Person {
     }
 
 
-    public void deserialize(Serialization reader) {
-        setPosition(reader.readString());
+    public void deserialize(ISerialization reader) {
+       // setPosition(reader.readString());
         setFirstName(reader.readString());
         setLastName(reader.readString());
         setAge(reader.readInteger());
@@ -61,15 +62,32 @@ public class Employee extends Person {
         setSalary(reader.readDouble());
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Employee employee = (Employee) o;
+        return hour == employee.hour &&
+                salary == employee.salary &&
+                Objects.equals(position, employee.position);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(hour, salary, position);
+    }
+
     public String toString() {
         log.info("Transformation team to string.");
-        String str = String.valueOf(
-                getFirstName()) + " " +
+        String str = getFirstName() + " " +
                 getLastName() + "  " +
                 getAge() + " years  " +
                 getHour() + " h  " +
-                getSalary() + " $  " +
-                getPosition() + "\n";
+                getSalary() + " $\n";
 
         return str;
     }

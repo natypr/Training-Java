@@ -1,8 +1,8 @@
 package main.by.naty.model.entity;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Objects;
 
 public class Team {
 
@@ -28,16 +28,15 @@ public class Team {
         return team.size();
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(team);
+    public void sort(Comparator<Employee> comparator){
+        team.sort(comparator);
     }
 
     public String toString() {
-        String str = "";
-        for(int i = 0; i < team.size(); i++) {
-            str += team.get(i) + " ";
+        StringBuilder str = new StringBuilder();
+        for (Employee emp : team) {
+            str.append(emp).append(" ");
         }
-        return str;
+        return str.toString();
     }
 }

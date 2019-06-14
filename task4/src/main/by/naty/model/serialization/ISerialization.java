@@ -1,6 +1,6 @@
 package main.by.naty.model.serialization;
 
-public interface Serialization extends AutoCloseable {
+public interface ISerialization extends AutoCloseable {
 
     int readInteger();
     double readDouble();
